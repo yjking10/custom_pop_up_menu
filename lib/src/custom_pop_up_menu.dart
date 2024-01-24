@@ -217,16 +217,16 @@ class _CustomPopupMenuState extends State<CustomPopupMenu> {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
         child: widget.child,
-        onTap: () {
-          if (widget.pressType == PressType.singleClick && _canResponse) {
-            _controller?.showMenu();
-          }
-        },
-        onLongPress: () {
-          if (widget.pressType == PressType.longPress && _canResponse) {
-            _controller?.showMenu();
-          }
-        },
+        onTap: widget.pressType == PressType.singleClick && _canResponse
+            ? () {
+                _controller?.showMenu();
+              }
+            : null,
+        onLongPress: widget.pressType == PressType.longPress && _canResponse
+            ? () {
+                _controller?.showMenu();
+              }
+            : null,
       ),
       color: Colors.transparent,
     );
